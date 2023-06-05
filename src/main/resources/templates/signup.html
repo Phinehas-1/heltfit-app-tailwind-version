@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Heltfit - the ultimate app for staying healthy.</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/signup.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href=""><img src="image/icon/back-button.png" alt="back button"></a>
+            </nav>
+            <section class="container">
+                <h1>Sign up<br/> for an account</h1>
+                <p>We will suggest a plan for you that fits these data.</p>
+            </section>
+        </header>
+        <main>
+            <form th:action="@{/register}" method="post" th:object="${registration}" class="container">
+                <input type="text" th:field="*{username}" placeholder="username">
+                <input type="password" th:field="*{password}" placeholder="password">
+                <input type="password" id="confirm-password" placeholder="confirm password">
+                <input type="email" th:field="*{email}" placeholder="email">
+                <input type="number" th:field="*{age}" placeholder="age">
+                <input type="number" th:field="*{weight}" placeholder="weight">
+                <input type="text" th:field="*{history}" placeholder="history of ulcer">
+                <input type="submit" value="submit">
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>

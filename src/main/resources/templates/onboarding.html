@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heltfit - the ultimate app for staying healthy.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/onboarding.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <section class="container">
+                <h1>Choose<br /> your plan</h1>
+                <p>Your can always start with
+                the recommended plan and
+                create a custom plan later.</p>
+            </section>
+        </header>
+        <main class="container">
+            <section class="container card-white">
+                <h2>Suggested</h2>
+                <p>This plan has been created to fit your bio-data and health profile</p>
+                <a th:href="@{/features}"><input type="submit" value="I want this"/></a>
+            </section>
+            <section class="container card-white">
+                <h2>Personalized</h2>
+                <p>Create the plan you think is just right for you</p>
+                <a href="@{/features}"><input type="submit" value="I want this" /></a>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

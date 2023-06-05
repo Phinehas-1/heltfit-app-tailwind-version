@@ -1,0 +1,31 @@
+:root h1 {
+    font-weight: 400;
+    line-height: 32px;
+    font-size: clamp(12px, 1.5rem, 32px);
+    max-width: 16ch;
+}
+
+body {
+    background-color: white;
+}
+
+h1.hero-centered {
+    text-align: center;
+}
+
+a {
+    color: var(--primary-color-1);
+}
+
+header.container {
+    row-gap: clamp(32px, 32px, 32px);
+}
+
+section.container {
+    justify-content: center;
+}
+
+main.container{
+    justify-content: center;
+    row-gap: 24px;
+}

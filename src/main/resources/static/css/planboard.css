@@ -1,0 +1,117 @@
+body {
+    background-color: var(--primary-color-2);
+}
+
+header{
+    background-color: white;
+}
+
+.page-heading {
+    display: grid;
+    row-gap: 24px;
+    text-align: center;
+}
+
+.page-heading h1 {
+    color: var(--primary-color-1);
+}
+
+.tab-heading {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content:end;
+    min-height: 48px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 2px #BDFF24;
+    text-align: center;
+}
+
+.tab-heading .tab-button-selected {
+    border-bottom: 4px solid var(--secondary-color-1);
+}
+
+main {
+    margin-top: 0;
+}
+
+main>section:nth-child(2) {
+    margin-top: 4px;
+    background-color: var(--primary-color-2);
+}
+
+.container.plan-panel {
+    width: 288px;
+    row-gap: 2rem;
+}
+
+.plan-panel-dashboard {
+    grid-template-columns: max-content max-content;
+    justify-content: space-between;
+}
+
+.plan-panel-dashboard>div {
+    display: grid;
+}
+
+.plan-panel-dashboard>:nth-child(1) {
+    row-gap: .5rem;
+    padding: .5rem;
+    background-color: var(--primary-color-3);
+}
+
+.plan-panel-dashboard>:nth-child(2) {
+    width: 180px;
+    grid-template-columns: max-content max-content max-content;
+    justify-content: space-around;
+    justify-self: end;
+    align-content: center;
+    background-color: var(--primary-color-3);
+}
+
+.plan-panel-dashboard>:nth-child(2)>div {
+    display: grid;
+    padding: .5rem;
+    background-color: var(--primary-color-2);
+}
+
+.plan-panel-dashboard>:nth-child(2)>div:nth-child(1){
+    background-color: var(--primary-color-4);
+}
+
+div.container{
+    padding: 1rem 0;
+}
+
+section.plan-panel > section:nth-child(3){
+    display: grid;
+    justify-content: space-between;
+}
+
+section.plan-desc{
+    grid-template-columns: 1fr;
+    padding: 16px;
+    max-width: 288px;
+}
+
+section.plan-desc > div:first-child {
+    padding: 8px 16px;
+    background-color: var(--primary-color-3);
+}
+
+section.plan-desc >ul {
+    list-style-position: inside;
+    list-style-type: none;
+    padding: 16px;
+    font-size: 12px;
+}
+
+section.plan-desc>ul>li {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    line-height: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+section.plan-desc>ul>li>div:first-child:before{
+    content: "-";
+    padding: 0 8px;
+}
