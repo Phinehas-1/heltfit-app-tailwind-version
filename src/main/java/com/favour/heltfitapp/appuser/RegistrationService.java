@@ -1,5 +1,7 @@
 package com.favour.heltfitapp.appuser;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ public class RegistrationService {
         try {
             String result = appUsers.save(appUserFromRegistration(registration))
                     .getUsername() == registration.username() ? "onboarding" : "redirect:/signup";
+            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(registration.username(), registration.password()));
             return result;
         } catch (Exception e) {
             log.error("signupUser() : {}",e.getCause());

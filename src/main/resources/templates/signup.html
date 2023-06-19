@@ -19,7 +19,7 @@
     <div class="container">
         <header>
             <nav>
-                <a href=""><img src="image/icon/back-button.png" alt="back button"></a>
+                <a th:href="@{/}"><img src="image/icon/back-button.png" alt="back button"></a>
             </nav>
             <section class="container">
                 <h1>Sign up<br/> for an account</h1>
@@ -34,7 +34,11 @@
                 <input type="email" th:field="*{email}" placeholder="email">
                 <input type="number" th:field="*{age}" placeholder="age">
                 <input type="number" th:field="*{weight}" placeholder="weight">
-                <input type="text" th:field="*{history}" placeholder="history of ulcer">
+                <select th:field="*{history}">
+                    <option value=""> - Family history of ulcer - </option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
                 <input type="submit" value="submit">
             </form>
         </main>

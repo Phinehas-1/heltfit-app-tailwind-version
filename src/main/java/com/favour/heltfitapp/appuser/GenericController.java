@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,12 +53,14 @@ public class GenericController {
     @GetMapping("/plan")
     public String plan(Model model, Principal principal) {
         model.addAttribute("activePlan", planService.getActivePlan(principal.getName()));
+        model.addAttribute("activeUser", principal.getName());
         return "plan";
     }
 
     @GetMapping("/planboard")
     public String planboard(Model model, final Plan plan, final Meal meal, final Exercise exercise, Principal principal) {
-        List<Plan> userPlans = planService.getAllPlansByUser(principal.getName());
+        String username = principal.equals(null) ? (String)SecurityContextHolder.getContext().getAuthentication().getPrincipal() : principal.getName();
+        List<Plan> userPlans = planService.getAllPlansByUser(username);
         model.addAttribute("userPlans", userPlans);
         return "planboard";
     }

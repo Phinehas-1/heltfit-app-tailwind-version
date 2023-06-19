@@ -28,7 +28,7 @@ public class AuthConfigurer {
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
         security.authorizeHttpRequests(customizer -> {
             customizer.requestMatchers("/resources/**", "/static/**", "/css/**", "/image/**" ).permitAll();
-            customizer.requestMatchers("/signup", "/register", "/planboard").permitAll();
+            customizer.requestMatchers("/signup", "/register").permitAll();
             customizer.anyRequest().authenticated();
         });
         security.formLogin(customizer -> {
