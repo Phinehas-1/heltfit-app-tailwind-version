@@ -66,7 +66,7 @@ public class PlanService {
                 .orElse(List.of(new Exercise()));
         
         return new PlanInfo(plan, allMeals, allExercises);
-    }
+    } 
 
     @Transactional
     public void activatePlan(Plan userPlan, String username) {
