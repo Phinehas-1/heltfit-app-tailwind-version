@@ -75,15 +75,15 @@
                             class="container">
                             <input type="text" th:field="*{mealname}" placeholder="meal name" required />
                             <input type="time" th:field="*{mealtime}" placeholder="time"/>
-                            <input type="text" th:field="*{mealdesc}" placeholder="description" />
+                            <textarea th:field="*{mealdesc}" placeholder="description" cols="30" rows="10"></textarea>
                             <input type="hidden" th:field="*{mealplanid}" />
                             <input type="submit" id="save-plan-btn" value="Save" disabled>
                         </form>
                         <form th:action="@{/saveExercise}" method="post" th:object="${exercise}" id="exercise-form"
                             class="container hide">
                             <input type="text" th:field="*{exercisename}" placeholder="exercise name" required />
-                            <input type="time" th:field="*{exercisetime}" placeholder="time">
-                            <input type="text" th:field="*{exercisedesc}" placeholder="description">
+                            <input type="time" th:field="*{exercisetime}" placeholder="time" required>
+                            <textarea th:field="*{exercisedesc}" placeholder="description" cols="30" rows="10"></textarea>
                             <input type="hidden" th:field="*{exerciseplanid}" />
                             <input type="submit" id="save-exercise-btn" value="Save" disabled>
                         </form>
