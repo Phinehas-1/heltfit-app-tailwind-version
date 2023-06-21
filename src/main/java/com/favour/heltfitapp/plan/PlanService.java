@@ -59,14 +59,37 @@ public class PlanService {
 
     @Transactional
     public PlanInfo getActivePlan(String username) {
-        Plan plan = getAllPlansByUser(username).stream().filter(userPlan -> userPlan.getActive().equals(true)).findFirst()
+        Plan plan = getAllPlansByUser(username).stream().filter(userPlan -> userPlan.getActive().equals(true))
+                .findFirst()
                 .orElse(new Plan());
         List<Meal> allMeals = meals.findAllByMealplanid(plan.getPlanid()).orElse(Arrays.asList(new Meal()));
         List<Exercise> allExercises = exercises.findAllByExerciseplanid(plan.getPlanid())
                 .orElse(List.of(new Exercise()));
-        
+
         return new PlanInfo(plan, allMeals, allExercises);
-    } 
+    }
+
+    @Transactional
+    public PlanInfo createRecommendedPlanForUser(String username) {
+        AppUser user = appUsers.findByUsername(username).orElseThrow();
+        String suggestedPlanName = suggestPlanForUser(user);
+        Plan plan = getAllPlansByUser("admin").stream()
+                .filter(userPlan -> userPlan.getPlanname().equals(suggestedPlanName)).findFirst()
+                .orElse(new Plan());
+        List<Meal> allMeals = meals.findAllByMealplanid(plan.getPlanid()).orElse(Arrays.asList(new Meal()));
+        List<Exercise> allExercises = exercises.findAllByExerciseplanid(plan.getPlanid())
+                .orElse(List.of(new Exercise()));
+
+        Plan recommendedPlan = plans.save(new Plan(user, suggestedPlanName, "suggested", true));
+        allMeals.stream().forEach(meal -> {
+            meals.save(new Meal(recommendedPlan.getPlanid(), meal.getMealname(), meal.getMealtime(), meal.getMealdesc()));
+        });
+        allExercises.stream().forEach(exercise -> {
+            exercises.save(new Exercise(recommendedPlan.getPlanid(), exercise.getExercisename(), exercise.getExercisetime(), exercise.getExercisedesc()));
+        });
+        return new PlanInfo(recommendedPlan, allMeals, allExercises);
+
+    }
 
     @Transactional
     public void activatePlan(Plan userPlan, String username) {
@@ -78,5 +101,16 @@ public class PlanService {
                 .orElseThrow(() -> new IllegalStateException("The plan id doesn't exist."));
         plan.setActive(true);
         plans.save(plan);
+    }
+
+    public String suggestPlanForUser(AppUser user) {
+        if (user.getHistory().equals("yes") && user.getAge() < 20) {
+            return "ulcer-1";
+        }
+        if (user.getAge() > 20 && user.getAge() < 60) {
+            return "ulcer-2";
+        } else {
+            return "ulcer-3";
+        }
     }
 }

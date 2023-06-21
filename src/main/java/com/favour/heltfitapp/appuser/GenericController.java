@@ -92,5 +92,13 @@ public class GenericController {
         return "redirect:/plan";
     }
 
+    @GetMapping("/recommended")
+    public String recommended(Model model){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("activePlan", planService.createRecommendedPlanForUser(username));
+        model.addAttribute("activeUser", username);
+        return "plan";
+    }
+
     
 }

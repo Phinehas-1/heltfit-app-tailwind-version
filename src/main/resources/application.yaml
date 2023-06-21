@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/heltfit
-    username: postgres
-    password: password
+    url: ${HELTFIT_DB_URL}
+    username: ${HELTFIT_DB_USER}
+    password: ${HELTFIT_DB_PASSWORD}
   jpa:
     properties:
       hibernate:
