@@ -18,9 +18,11 @@ import com.favour.heltfitapp.plan.Plan;
 import com.favour.heltfitapp.plan.PlanService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class GenericController {
     private final RegistrationService registrationService;
     private final PlanService planService;
@@ -45,6 +47,7 @@ public class GenericController {
 
     @GetMapping("/onboarding")
     public String onboarding() {
+        log.info("username is {}",SecurityContextHolder.getContext().getAuthentication().getName());
         return "onboarding";
     }
 
@@ -94,6 +97,7 @@ public class GenericController {
 
     @GetMapping("/recommended")
     public String recommended(Model model){
+        log.info("username is {}",SecurityContextHolder.getContext().getAuthentication().getName());
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("activePlan", planService.createRecommendedPlanForUser(username));
         model.addAttribute("activeUser", username);

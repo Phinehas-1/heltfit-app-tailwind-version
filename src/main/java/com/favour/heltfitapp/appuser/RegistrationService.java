@@ -20,8 +20,10 @@ public class RegistrationService {
     public String signupUser(Registration registration) {
         try {
             String result = appUsers.save(appUserFromRegistration(registration))
-                    .getUsername() == registration.username() ? "onboarding" : "redirect:/signup";
+                    .getUsername() == registration.username() ? "redirect:/onboarding" : "redirect:/signup";
+                    
             SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(registration.username(), registration.password()));
+            log.info("setting username {} in security context as {} ", registration.username(), SecurityContextHolder.getContext().getAuthentication().getName());
             return result;
         } catch (Exception e) {
             log.error("signupUser() : {}",e.getCause());

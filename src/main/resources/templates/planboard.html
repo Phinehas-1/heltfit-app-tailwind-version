@@ -18,9 +18,11 @@
 <body onload="handleSelectPlanChange()">
     <header>
         <div class="container">
-            <nav>
-                <div><a href=""><img src="" alt=""></a></div>
-                <div><img src="" alt=""></div>
+            <nav class="container">
+                <a th:href="@{/plan}"><img src="image/icon/back-button.png" alt="back button"></a>
+                <form th:action="@{/logout}" method="post">
+                    <button><img src="image/icon/logout-1.png" alt="logout button"></button>
+                </form>
             </nav>
             <section class="page-heading">
                 <p>Create a plan and / or activate one.</p>

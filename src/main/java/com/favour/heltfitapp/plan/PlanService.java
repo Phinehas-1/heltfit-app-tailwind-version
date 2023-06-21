@@ -14,7 +14,6 @@ import com.favour.heltfitapp.exercise.Exercise;
 import com.favour.heltfitapp.exercise.ExerciseRepository;
 import com.favour.heltfitapp.meal.Meal;
 import com.favour.heltfitapp.meal.MealRepository;
-import com.favour.heltfitapp.meal.MealService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +27,6 @@ public class PlanService {
     private final AppUserRepository appUsers;
 
     private final MealRepository meals;
-    private final MealService mealService;
     private final ExerciseRepository exercises;
 
     @Transactional
@@ -80,8 +78,10 @@ public class PlanService {
         List<Exercise> allExercises = exercises.findAllByExerciseplanid(plan.getPlanid())
                 .orElse(List.of(new Exercise()));
 
-        Plan recommendedPlan = plans.save(new Plan(user, suggestedPlanName, "suggested", true));
+        Plan recommendedPlan = plans.save(new Plan(user, user.getUsername(), "suggested", true));
+        log.info("recommended plan id is {}", recommendedPlan.getPlanid());
         allMeals.stream().forEach(meal -> {
+            log.info("meal name is {}", meal.getMealname());
             meals.save(new Meal(recommendedPlan.getPlanid(), meal.getMealname(), meal.getMealtime(), meal.getMealdesc()));
         });
         allExercises.stream().forEach(exercise -> {
