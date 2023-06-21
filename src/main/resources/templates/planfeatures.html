@@ -18,13 +18,13 @@
 <body>
     <header>
         <div class="container">
-            <nav class="container">
-                <a th:href="@{/}"><img src="image/icon/back-button.png" alt="back button"></a>
+            <nav class="container" style="width: 288px;">
+                <a th:href="@{/plan}"><img src="image/icon/back-button.png" alt="back button"></a>
                 <form th:action="@{/logout}" method="post">
                     <button><img src="image/icon/logout-1.png" alt="logout button"></button>
                 </form>
             </nav>
-            <!-- <section class="page-heading">
+            <!-- <section class="page-heading" >
                 <h1>Welcome, highly favored one!</h1>
                 <p>Please ensure to follow your plan for today</p>
             </section> -->
@@ -32,8 +32,8 @@
     </header>
     <main>
         <section class="tab-heading">
-            <span>Meal</span>
-            <span class="tab-button-selected">Exercise</span>
+            <!-- <span>Meal</span>
+            <span class="tab-button-selected">Exercise</span> -->
         </section>
         <section>
             <div class="container">
@@ -51,26 +51,35 @@
                         </div>
                     </section>
                     <section class="plan-item">
-                        <div>
-                            <img src="image/icon/07_00.png" alt="">
+                        <div th:switch="${itemtype}">
+                            <div
+                                style=" background-color: black; color: white; padding: 16px; font-family: 'Courier New', Courier, monospace; border-radius: 10px;">
+                                <span th:case="meal" th:text="${item.mealtime}"></span>
+                                <span th:case="*" th:text="${item.exercisetime}"></span>
+                            </div>
                         </div>
-                        <div>
-                            <h4>Yoga</h4>
-                            <p>Duration: <span>15 minutes</span></p>
+                        <div th:switch="${itemtype}">
+                            <h4>
+                                <span th:case="meal" th:text="${item.mealname}"></span>
+                                <span th:case="*" th:text="${item.exercisename}"></span>
+                            </h4>
+                            <!-- <p>Duration: <span>15 minutes</span></p> -->
                         </div>
                     </section>
-                    <section class="plan-item plan-desc" style="justify-content: start;">
-                        <div><span>Steps</span></div>
+                    <section class="plan-item plan-desc" style="justify-content: start;" th:switch="${itemtype}">
+                        <div><span>Description</span></div>
                         <ul>
                             <li>
                                 <div></div>
-                                <div>Start by doing a light warm up
-                                of the muscles.</div>
+                                <div>
+                                    <span th:case="meal" th:text="${item.mealdesc}"></span>
+                                    <span th:case="*" th:text="${item.exercisedesc}"></span>
+                                </div>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <div></div>
                                 <div>End by doing a light warm down.</div>
-                            </li>
+                            </li> -->
                         </ul>
                     </section>
                 </section>

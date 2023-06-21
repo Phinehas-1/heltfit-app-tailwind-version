@@ -1,5 +1,7 @@
 package com.favour.heltfitapp.exercise;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,5 +21,10 @@ public class ExerciseService {
     public void saveExercise(Exercise exercise){
         exercises.save(exercise);
         log.info("{} saved.", exercise);
+    }
+
+    public Exercise getExercise(String id){
+        UUID exerciseId = UUID.fromString(id);
+        return exercises.findById(exerciseId).orElse(new Exercise());
     }
 }

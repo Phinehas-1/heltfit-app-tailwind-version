@@ -19,7 +19,7 @@
     <header>
         <div class="container">
             <nav class="container">
-                <a th:href="@{/}"><img src="image/icon/back-button.png" alt="back button"></a>
+                <div></div>
                 <form th:action="@{/logout}" method="post">
                     <button><img src="image/icon/logout-1.png" alt="logout button"></button>
                 </form>
@@ -27,7 +27,7 @@
             <section class="page-heading">
                 <h1>Welcome, <span th:text="${activeUser}" style="color: var(--secondary-color-1);">highly favoured one</span>!</h1>
                 <p th:switch="${activeUser}">
-                    <span th:case="admin">You may proceed to setup recommended plans if you have done so already.</span>
+                    <span th:case="admin">You may proceed to setup recommended plans if you have not done so already.</span>
                     <span th:case="*">Please ensure to follow your plan for today.</span>
                 </p>
             </section>
@@ -64,7 +64,7 @@
                         <div>
                             <h4 class="item-heading-text"><span th:text="${meal.mealname}">Bread & Tea</span></h4>
                             <p><span class="desc-text" th:text="${meal.mealdesc}"></span></p>
-                            <a th:href="@{/features}"><span>See description</span></a>
+                            <a th:href="@{/features(item='meal',itemid=${meal.id})}"><span>See full description</span></a>
                         </div>
                     </section>
                     <section>
@@ -98,7 +98,7 @@
                         <div>
                             <h4 class="item-heading-text"><span th:text="${exercise.exercisename}">Bread & Tea</span></h4>
                             <p><span class="desc-text" th:text="${exercise.exercisedesc}">5 slice of bread</span></p>
-                            <a th:href="@{/features}"><span>See description</span></a>
+                            <a th:href="@{/features(item='exercise',itemid=${exercise.id})}"><span>See full description</span></a>
                         </div>
                     </section>
                     <section>

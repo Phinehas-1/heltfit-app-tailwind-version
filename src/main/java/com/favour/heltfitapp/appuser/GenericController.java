@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.favour.heltfitapp.exercise.Exercise;
 import com.favour.heltfitapp.exercise.ExerciseService;
@@ -85,7 +86,15 @@ public class GenericController {
     }
 
     @GetMapping("/features")
-    public String features() {
+    public String features(@RequestParam("item") String item, @RequestParam("itemid") String itemid, Model model) {
+        if(item.equals("meal")){
+            log.info(itemid);
+            model.addAttribute("itemtype", item);
+            model.addAttribute("item", mealService.getMeal(itemid));
+        }else{
+            log.info(itemid);
+            model.addAttribute("item", exerciseService.getExercise(itemid));
+        }
         return "planfeatures";
     }
 
