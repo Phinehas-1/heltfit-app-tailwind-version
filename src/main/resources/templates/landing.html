@@ -5,40 +5,72 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com" rel="stylesheet"></script>
     <title>Heltfit - the ultimate app for staying healthy.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/landing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <header class="container">
-            <section>
-                <div class="img-container">
-                    <img src="image/logo/heltfit-green-4-no-watermark 1.png" alt="">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+</style>
+
+ <div class="bg-[#061A40] flex flex-col items-center w-screen h-screen justify-center">
+        <div class="bg-white flex flex-col w-[680px] h-[680px] rounded-[31px]">
+            <img src="image/logo/heltfit-green-4-no-watermark 1.png" alt="Your Image" class="w-[150px] h-[150px] mt-[50px] mb-[20px] m-auto">
+            <div class="font-poppins text-[38px] font-semibold leading-[43px] text-center">
+                Welcome to
+
+                <span class="font-poppins text-[38px] font-semibold leading-[43px] text-[rgba(132,_189,_0,_0.6)] contents text-center ">
+                    Heltfit
+                </span>
+                <div class="font-poppins text-[38px] font-semibold leading-[43px] text-black contents text-center">
+                    ,<br />
+                    Sign In To Continue.
                 </div>
-            </section>
-            <section class="container">
-                <h1 class="hero-centered">“
-                    <span style="font-size: clamp(12px, 1rem, 16px);">The recommended app for</span>
-                    <span style="color:var(--primary-color-1);">managing ulcers </span> and
-                    <span style="color:var(--secondary-color-1);">staying healthy</span> ”
-                </h1>
-            </section>
-        </header>
-        <main class="container">
-            <form th:action="@{/}" method="post" class="container">
-                <input type="text" id="username" name="username" placeholder="username" />
-                <input type="password" id="password" name="password" placeholder="password" />
-                <input type="submit" value="Sign me in" />
+            </div>
+
+
+            <form th:action="@{/}" method="post" class="mt-[20px] flex flex-col w-[70%] mx-auto">
+                <div>
+                <label class="font-size-[24px] block">Username</label>
+                <input type="text" id="username" name="username" placeholder="" class="w-full h-[45px] rounded-[4px] border-[1px] block" />
+                </div>
+                <div>
+                    <label class="font-size-[24px] block mt-[20px]">Password</label>
+                <input type="password" id="password" name="password" placeholder="" class="w-full h-[45px] rounded-[4px] border-[1px] block" />
+                </div>
+                </button>
+                <input type="submit" value="Sign in " class="bg-[#061a40] flex flex-col justify-center relative w-full h-16 items-center rounded-lg text-white mt-[40px]"  />
             </form>
-            <span style="justify-self: center;"><a th:href="@{/signup}">Create account for me</a></span>
-        </main>
+            <div class="mt-[20px] text-center"> Don't have an account ?
+            <span class=" underline text-[rgba(132,_189,_0,_0.6)] text-center" ><a th:href="@{/signup}">Sign Up</a></span>
+            </div>
+            </div>
     </div>
 </body>
 

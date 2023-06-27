@@ -4,13 +4,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.favour.heltfitapp.exercise.Exercise;
-
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class MealService {
     private final MealRepository meals;

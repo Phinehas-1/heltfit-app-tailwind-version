@@ -72,15 +72,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<excludes>
+					<!-- <excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</exclude>
-					</excludes>
+						<exclude> **/style.tailwind.css </exclude>
+					</excludes> -->
 				</configuration>
 			</plugin>
 		</plugins>
+
 	</build>
 
 </project>

@@ -5,39 +5,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com" rel="stylesheet"></script>
     <title>Heltfit - the ultimate app for staying healthy.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/onboarding.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0fa94578a2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <section class="container">
-                <h1>Choose<br /> your plan</h1>
-                <p>Your can always start with
-                the recommended plan and
-                create a custom plan later.</p>
-            </section>
-        </header>
-        <main class="container">
-            <section class="container card-white">
-                <h2>Suggested</h2>
-                <p>This plan has been created to fit your bio-data and health profile</p>
-                <a th:href="@{/recommended}"><input type="submit" value="I want this"/></a>
-            </section>
-            <section class="container card-white">
-                <h2>Personalized</h2>
-                <p>Create the plan you think is just right for you</p>
-                <a th:href="@{/planboard}"><input type="submit" value="I want this" /></a>
-            </section>
-        </main>
+<div class="bg-white flex flex-col justify-center items-center w-screen h-screen">
+    <div class="my-10">
+    <h1 class="mb-5 text-center text-5xl font-['Poppins'] font-semibold tracking-[-0.30000001192092896] text-black">
+        Choose Your Plan
+    </h1>
+    <p class="text-center text-2xl font-['Poppins'] text-[#6d6d6d] mb-5 mx-auto max-w-3xl">
+        You can always start with the recommended plan and create a custom plan later.     </p>
+</div>
+    <div class="flex space-x-10 max-w-[80%] mx-auto">
+    <div class="w-[460px] h-[500px] p-12 rounded border-[1px] border-solid border-gray-300 bg-[rgba(215,_239,_158,_0.6)] flex flex-col justify-center items-center">
+        <h1 class="text-4xl font-['Poppins'] font-semibold leading-[24px] text-black mb-12">
+            Suggested
+        </h1>
+        <p class="text-center text-xl font-['Poppins'] leading-[34px] text-[#6d6d6d] mb-12">
+            This plan has been created to fit your bio data and health profile
+        </p>
+<!--        <p class="text-xl font-['Poppins'] leading-[24px] text-black underline mb-12">-->
+<!--            Read all the features-->
+<!--        </p>-->
+        <a th:href="@{/recommended}" class="rounded py-4 bg-[#061a40] w-3/4 mx-auto text-2xl font-['Poppins'] font-medium leading-[24px] text-white text-center">Choose Plan</a>
     </div>
+    <div class="w-[460px] h-[500px] p-12 rounded border-[1px] border-solid border-gray-300 bg-white flex flex-col justify-center items-center">
+        <h1 class="text-4xl font-['Poppins'] font-semibold leading-[24px] text-black mb-12">
+            Personalized
+        </h1>
+        <p class="text-center text-xl font-['Poppins'] leading-[34px] text-[#6d6d6d] mb-12">
+            This plan has been created to fit your bio data and health profile
+        </p>
+<!--        <p class="text-xl font-['Poppins'] leading-[24px] text-black underline mb-12">-->
+<!--            Read all the features-->
+<!--        </p>-->
+        <a th:href="@{/planboard}" class="rounded py-4 border-[1px] border-[#061a40] text-[#061a40] w-3/4 mx-auto text-2xl font-['Poppins'] font-medium leading-[24px] text-center">Choose Plan</a>
+    </div>
+    </div>
+</div>
 </body>
+
 
 </html>

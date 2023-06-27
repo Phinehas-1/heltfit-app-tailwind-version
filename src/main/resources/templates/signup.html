@@ -5,43 +5,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Heltfit - the ultimate app for staying healthy.</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/signup.css">
+    <script src="https://cdn.tailwindcss.com" rel="stylesheet"></script>
+    <title>Heltfit - the ultimate app for staying healthy.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0fa94578a2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <nav>
-                <a th:href="@{/}"><img src="image/icon/back-button.png" alt="back button"></a>
-            </nav>
-            <section class="container">
-                <h1>Sign up<br/> for an account</h1>
-                <p>We will suggest a plan for you that fits these data.</p>
-            </section>
-        </header>
-        <main>
-            <form th:action="@{/register}" method="post" th:object="${registration}" class="container">
-                <input type="text" th:field="*{username}" placeholder="username">
-                <input type="password" th:field="*{password}" placeholder="password">
-                <input type="password" id="confirm-password" placeholder="confirm password">
-                <input type="email" th:field="*{email}" placeholder="email">
-                <input type="number" th:field="*{age}" placeholder="age">
-                <input type="number" th:field="*{weight}" placeholder="weight">
-                <select th:field="*{history}">
-                    <option value="yes">History of ulcer</option>
-                    <option value="no">No history of ulcer</option>
-                </select>
-                <input type="submit" value="submit">
-            </form>
-        </main>
+<div class="bg-white flex flex-col justify-center  w-screen">
+    <div class="mt-20 mb-5 relative">
+        <div class="absolute top-50 left-10">
+            <a th:href="@{/}" class= "text-5xl">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+
+
+        </div>
+        <h1 class="mb-5 text-center text-6xl font-['Poppins'] font-semibold tracking-[-0.30000001192092896] text-black">
+            Create An Account
+        </h1>
+        <p class="text-center text-3xl font-['Poppins'] text-[#6d6d6d] mb-5">
+            We will suggest a plan for you that fits the data below.
+        </p>
     </div>
+    <div class="container mx-auto">
+        <form th:action="@{/register}" method="post" th:object="${registration}" class="w-3/4 m-auto" >
+            <div class="grid gap-x-10 gap-y-5 grid-cols-2">
+            <div class="col-span-1 flex flex-col">
+                <label>Username</label>
+                <input type="text" th:field="*{username}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block" >
+            </div>
+            <div class="col-span-1 flex flex-col">
+                <label>Password</label>
+            <input type="password" th:field="*{password}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+            </div>
+            <div class="col-span-1 flex flex-col">
+                <label>Confirm password</label>
+            <input type="password" id="confirm-password" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+            </div>
+            <div class="col-span-1 flex flex-col">
+                <label>Email</label>
+            <input type="email" th:field="*{email}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+            </div>
+            <div class="col-span-1 flex flex-col">
+                <label>Age</label>
+            <input type="number" th:field="*{age}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+            </div>
+            <div class="col-span-1 flex flex-col">
+                <label>Weight</label>
+            <input type="number" th:field="*{weight}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+            </div>
+            <div class="col-span-1 flex flex-col">
+                <label>History of ulcer</label>
+            <select th:field="*{history}" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+                <option value=""></option>
+                <option value="yes">History of ulcer</option>
+                <option value="no">No history of ulcer</option>
+            </select>
+            </div>
+                <div class="col-span-1 flex flex-col">
+                    <label>(Add extra form)</label>
+                    <input type="text" disabled th:field="*{age}" placeholder="" class="w-full h-[45px] rounded-[4px] border-[1px] block">
+                </div>
+            </div>
+            <input type="submit" value="Sign up" class="bg-[#061a40] flex flex-col justify-center relative w-1/2 mx-auto h-16 items-center rounded-lg text-white mt-[60px]">
+        </form>
+</div>
+
 </body>
 
 </html>

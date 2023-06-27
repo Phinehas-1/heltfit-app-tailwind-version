@@ -1,0 +1,26 @@
+{
+  "name": "heltfit-app-thymeleaf",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000h\u0000e\u0000l\u0000t\u0000f\u0000i\u0000t\u0000-\u0000a\u0000p\u0000p\u0000-\u0000t\u0000h\u0000y\u0000m\u0000e\u0000l\u0000e\u0000a\u0000f\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phinehas-1/heltfit-app-thymeleaf.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Phinehas-1/heltfit-app-thymeleaf/issues"
+  },
+  "homepage": "https://github.com/Phinehas-1/heltfit-app-thymeleaf#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.2"
+  }
+}
