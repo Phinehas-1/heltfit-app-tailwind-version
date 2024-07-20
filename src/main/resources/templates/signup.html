@@ -9,70 +9,90 @@
     <title>Heltfit - the ultimate app for staying healthy.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/0fa94578a2.js" crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0fa94578a2.js"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-<div class="bg-white flex flex-col justify-center  w-screen">
-    <div class="mt-20 mb-5 relative">
-        <div class="absolute top-50 left-10">
-            <a th:href="@{/}" class= "text-5xl">
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
+    <div
+        class="bg-white flex flex-col justify-center  w-screen items-center py-8">
+        <div class="mt-20 mb-5 w-[95%]">
+            <div class="flex flex-col gap-4">
+                <a th:href="@{/}" class="text-sm ml-5 px-4 py-2 w-fit border border-black rounded-md">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    back
+                </a>
+                <h1
+                    class="md:mb-5 text-center text-2xl md:text-6xl font-['Poppins'] font-semibold tracking-[-0.30000001192092896] text-black">
+                    Create An Account
+                </h1>
+            </div>
 
-
+            <p
+                class="text-center text-lg md:text-3xl font-['Poppins'] text-[#6d6d6d] mb-5">
+                We will suggest a plan for you that fits the data below.
+            </p>
         </div>
-        <h1 class="mb-5 text-center text-6xl font-['Poppins'] font-semibold tracking-[-0.30000001192092896] text-black">
-            Create An Account
-        </h1>
-        <p class="text-center text-3xl font-['Poppins'] text-[#6d6d6d] mb-5">
-            We will suggest a plan for you that fits the data below.
-        </p>
-    </div>
-    <div class="container mx-auto">
-        <form th:action="@{/register}" method="post" th:object="${registration}" class="w-3/4 m-auto" >
-            <div class="grid gap-x-10 gap-y-5 grid-cols-2">
-            <div class="col-span-1 flex flex-col">
-                <label>Username</label>
-                <input type="text" th:field="*{username}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block" >
-            </div>
-            <div class="col-span-1 flex flex-col">
-                <label>Password</label>
-            <input type="password" th:field="*{password}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
-            </div>
-            <div class="col-span-1 flex flex-col">
-                <label>Confirm password</label>
-            <input type="password" id="confirm-password" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
-            </div>
-            <div class="col-span-1 flex flex-col">
-                <label>Email</label>
-            <input type="email" th:field="*{email}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
-            </div>
-            <div class="col-span-1 flex flex-col">
-                <label>Age</label>
-            <input type="number" th:field="*{age}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
-            </div>
-            <div class="col-span-1 flex flex-col">
-                <label>Weight</label>
-            <input type="number" th:field="*{weight}" placeholder="" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
-            </div>
-            <div class="col-span-1 flex flex-col">
-                <label>History of ulcer</label>
-            <select th:field="*{history}" class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
-                <option value=""></option>
-                <option value="yes">History of ulcer</option>
-                <option value="no">No history of ulcer</option>
-            </select>
-            </div>
-                <div class="col-span-1 flex flex-col">
-                    <label>(Add extra form)</label>
-                    <input type="text" disabled th:field="*{age}" placeholder="" class="w-full h-[45px] rounded-[4px] border-[1px] block">
+        <div class="container w-[95%]">
+            <form th:action="@{/register}" method="post"
+                th:object="${registration}" class="w-3/4 m-auto">
+                <div
+                    class="md:grid gap-x-10 gap-y-5 md:grid-cols-2 flex flex-col">
+                    <div class="col-span-1 flex flex-col">
+                        <label>Username</label>
+                        <input type="text" th:field="*{username}" placeholder=""
+                            class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+                    </div>
+                    <div class="col-span-1 flex flex-col">
+                        <label>Password</label>
+                        <input type="password" th:field="*{password}"
+                            placeholder=""
+                            class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+                    </div>
+                    <div class="col-span-1 flex flex-col">
+                        <label>Confirm password</label>
+                        <input type="password" id="confirm-password"
+                            placeholder=""
+                            class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+                    </div>
+                    <div class="col-span-1 flex flex-col">
+                        <label>Email</label>
+                        <input type="email" th:field="*{email}" placeholder=""
+                            class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+                    </div>
+                    <div class="col-span-1 flex flex-col">
+                        <label>Age</label>
+                        <input type="number" th:field="*{age}" placeholder=""
+                            class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+                    </div>
+                    <div class="col-span-1 flex flex-col">
+                        <label>Weight</label>
+                        <input type="number" th:field="*{weight}" placeholder=""
+                            class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+                    </div>
+                    <div class="col-span-1 flex flex-col">
+                        <label>History of ulcer</label>
+                        <select th:field="*{history}"
+                            class="p-3 w-full h-[45px] rounded-[4px] border-[1px] block">
+                            <option value=""></option>
+                            <option value="yes">History of ulcer</option>
+                            <option value="no">No history of ulcer</option>
+                        </select>
+                    </div>
+                    <div class="col-span-1 flex flex-col">
+                        <label>(Add extra form)</label>
+                        <input type="text" disabled th:field="*{age}"
+                            placeholder=""
+                            class="w-full h-[45px] rounded-[4px] border-[1px] block">
+                    </div>
                 </div>
-            </div>
-            <input type="submit" value="Sign up" class="bg-[#061a40] flex flex-col justify-center relative w-1/2 mx-auto h-16 items-center rounded-lg text-white mt-[60px]">
-        </form>
-</div>
+                <input type="submit" value="Sign up"
+                    class="bg-[#061a40] flex flex-col justify-center relative w-1/2 mx-auto h-16 items-center rounded-lg text-white mt-[60px]">
+            </form>
+        </div>
 
 </body>
 

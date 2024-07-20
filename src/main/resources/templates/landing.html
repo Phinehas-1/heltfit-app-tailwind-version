@@ -39,30 +39,30 @@
 }
 </style>
 
- <div class="bg-[#061A40] flex flex-col items-center w-screen h-screen justify-center">
-        <div class="bg-white flex flex-col w-[680px] h-[680px] rounded-[31px]">
+ <div class="bg-[#061A40] flex flex-col items-center w-screen md:min-h-screen md:justify-center py-8">
+        <div class="bg-white flex flex-col w-11/12 md:w-[680px] h-[680px] rounded-[31px]">
             <img src="image/logo/heltfit-green-4-no-watermark 1.png" alt="Your Image" class="w-[150px] h-[150px] mt-[50px] mb-[20px] m-auto">
-            <div class="font-poppins text-[38px] font-semibold leading-[43px] text-center">
+            <div class="font-poppins text-lg md:text-[38px] font-semibold leading-5 md:leading-[43px] text-center">
                 Welcome to
 
-                <span class="font-poppins text-[38px] font-semibold leading-[43px] text-[rgba(132,_189,_0,_0.6)] contents text-center ">
+                <span class="font-poppins text-lg md:text-[38px] font-semibold leading-5 md:leading-[43px] text-[rgba(132,_189,_0,_0.6)] contents text-center ">
                     Heltfit
                 </span>
-                <div class="font-poppins text-[38px] font-semibold leading-[43px] text-black contents text-center">
+                <div class="font-poppins text-lg md:text-[38px] font-semibold leading-5 md:leading-[43px] text-black contents text-center">
                     ,<br />
                     Sign In To Continue.
                 </div>
             </div>
 
 
-            <form th:action="@{/}" method="post" class="mt-[20px] flex flex-col w-[70%] mx-auto">
+            <form th:action="@{/}" method="post" class="mt-[20px] flex flex-col w-[90%] mx-auto">
                 <div>
                 <label class="font-size-[24px] block">Username</label>
-                <input type="text" id="username" name="username" placeholder="" class="w-full h-[45px] rounded-[4px] border-[1px] block" />
+                <input type="text" id="username" name="username" placeholder="" class="w-full h-[45px] rounded-[4px] border-[1px] block px-3" />
                 </div>
                 <div>
                     <label class="font-size-[24px] block mt-[20px]">Password</label>
-                <input type="password" id="password" name="password" placeholder="" class="w-full h-[45px] rounded-[4px] border-[1px] block" />
+                <input type="password" id="password" name="password" placeholder="" class="w-full h-[45px] rounded-[4px] border-[1px] block px-3" />
                 </div>
                 </button>
                 <input type="submit" value="Sign in " class="bg-[#061a40] flex flex-col justify-center relative w-full h-16 items-center rounded-lg text-white mt-[40px]"  />

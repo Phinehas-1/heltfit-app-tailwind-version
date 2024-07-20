@@ -40,7 +40,7 @@ main>section:nth-child(2) {
 }
 
 .container.plan-panel {
-    width: 288px;
+    /* width: 288px; */
     row-gap: 2rem;
 }
 
@@ -54,8 +54,8 @@ main>section:nth-child(2) {
 }
 
 .plan-panel-dashboard>:nth-child(1) {
-    row-gap: .5rem;
-    padding: .5rem;
+    /* row-gap: .5rem;
+    padding: .5rem; */
     background-color: var(--primary-color-3);
 }
 

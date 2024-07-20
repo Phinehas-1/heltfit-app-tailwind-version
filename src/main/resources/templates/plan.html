@@ -1,142 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heltfit - the ultimate app for staying healthy.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/planboard.css">
-</head>
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <script src="https://cdn.tailwindcss.com" rel="stylesheet"></script>
+    <title>Heltfit - the ultimate app for staying healthy.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/planboard.css" />
+  </head>
 
-<body>
-    <header>
-        <div class="container">
-            <nav class="container">
-                <div></div>
-                <form th:action="@{/logout}" method="post">
-                    <button><img src="image/icon/logout-1.png" alt="logout button"></button>
-                </form>
-            </nav>
-            <section class="page-heading">
-                <h1>Welcome, <span th:text="${activeUser}" style="color: var(--secondary-color-1);">highly favoured one</span>!</h1>
-                <p th:switch="${activeUser}">
-                    <span th:case="admin">You may proceed to setup recommended plans if you have not done so already.</span>
-                    <span th:case="*">Please ensure to follow your plan for today.</span>
-                </p>
-            </section>
-        </div>
+  <body class="bg-white flex flex-col justify-center items-center">
+    <header class="w-full">
+      <div class="">
+        <nav
+          class="w-full flex justify-between bg-[#061A40] text-white items-center h-16 px-6"
+        >
+          <div class="text-[0.9rem]">
+            Welcome,
+            <span th:text="${activeUser}" class="font-bold">
+              highly favoured one</span
+            >!
+          </div>
+          <form th:action="@{/logout}" method="post" class="w-fit">
+            <button class="w-5">
+              <i class="material-icons text-white">logout</i>
+            </button>
+          </form>
+        </nav>
+        <section class="page-heading">
+          <p th:switch="${activeUser}" class="p-8">
+            <span th:case="admin"
+              >You may proceed to setup recommended plans if you have not done
+              so already.</span
+            >
+            <span th:case="*"
+              >Please ensure to follow your plan for today.</span
+            >
+          </p>
+        </section>
+      </div>
     </header>
-    <main>
-        <section class="tab-heading">
-            <span id="meal-tab-button" class="tab-button-selected">Meal</span>
-            <span id="exercise-tab-button">Exercise</span>
-        </section>
-        <section>
-            <div class="container">
-                <section id="meal-part" class="container plan-panel">
-                    <section class="container plan-panel-dashboard">
-                        <div>
-                            <span style="font-size: max(8px, 12px); color:var(--secondary-color-1)">active plan</span>
-                            <span style="font-size: max(12px, 16px); color:var(--primary-color-1); font-weight: 500;"
-                                th:text="${activePlan.plan.planname}">heltfit</span>
-                        </div>
-                        <!-- <div id="planboard-plan-period-picker">
+    <main class="max-w-[920px] rounded-md shadow-lg">
+      <section class="tab-heading">
+        <span id="meal-tab-button" class="tab-button-selected">Meal</span>
+        <span id="exercise-tab-button">Exercise</span>
+      </section>
+      <section>
+        <div class="p-8 md:min-w-[920px] bg-white">
+          <section id="meal-part" class="container plan-panel w-full min-w-[285px]">
+            <section class="container plan-panel-dashboard">
+              <div class="px-5 py-2">
+                <span
+                  style="
+                    color: var(--secondary-color-1);
+                  "
+                  class="text-[.6rem] font-semibold"
+                  >active plan</span
+                >
+                <span
+                  style="
+                    font-size: max(12px, 16px);
+                    color: var(--primary-color-1);
+                    font-weight: 500;
+                  "
+                  th:text="${activePlan.plan.planname}"
+                  >heltfit</span
+                >
+              </div>
+              <!-- <div id="planboard-plan-period-picker">
                             <div><img src="image/icon/ep_sunrise.png" alt=""></div>
                             <div><img src="image/icon/sunshine.png" alt=""></div>
                             <div><img src="image/icon/Vector.png" alt=""></div>
                         </div> -->
-                    </section>
-                    <section th:each="meal : ${activePlan.meals}" class="plan-item">
-                        <div>
-                            <div
-                                style=" background-color: black; color: white; padding: 16px; font-family: 'Courier New', Courier, monospace; border-radius: 10px;">
-                                <span th:text="${meal.mealtime}"></span>
-                            </div>
+            </section>
+            <section th:each="meal : ${activePlan.meals}" class="plan-item">
+              <div class=" flex gap-4 items-center">
+                <div
+                  style="
+                    background-color: black;
+                    color: white;
+                    padding: 8px;
+                    font-family: 'Courier New', Courier, monospace;
+                    border-radius: 10px;
+                  "
+                >
+                  <span th:text="${meal.mealtime}"></span>
+                </div>
+                <h4 class="item-heading-text">
+                  <span th:text="${meal.mealname}">Bread & Tea</span>
+                </h4>
+              </div>
+              <div>
+                <p>
+                  <span th:text="${meal.mealdesc}"></span>
+                </p>
+                <a th:href="@{/features(item='meal',itemid=${meal.id})}" class="decoration-dotted underline"
+                  ><span>See full description</span></a
+                >
+              </div>
+            </section>
+            <section>
+              <form th:action="@{/planboard}">
+                <input type="submit" value="Select a plan" />
+              </form>
+            </section>
+          </section>
 
-                        </div>
-                        <div>
-                            <h4 class="item-heading-text"><span th:text="${meal.mealname}">Bread & Tea</span></h4>
-                            <p><span class="desc-text" th:text="${meal.mealdesc}"></span></p>
-                            <a th:href="@{/features(item='meal',itemid=${meal.id})}"><span>See full description</span></a>
-                        </div>
-                    </section>
-                    <section>
-                        <form th:action="@{/planboard}">
-                            <input type="submit" value="Select a plan">
-                        </form>
-                    </section>
-                </section>
-
-                <section id="exercise-part" class="container plan-panel hide">
-                    <section class="container plan-panel-dashboard">
-                        <div>
-                            <span style="font-size: max(8px, 12px); color:var(--secondary-color-1)">active plan</span>
-                            <span style="font-size: max(12px, 16px); color:var(--primary-color-1); font-weight: 500;"
-                                th:text="${activePlan.plan.planname}">heltfit</span>
-                        </div>
-                        <!-- <div id="planboard-plan-period-picker">
+          <section id="exercise-part" class="container plan-panel hide w-full min-w-[285px]">
+            <section class="container plan-panel-dashboard">
+              <div class="px-5 py-2">
+                <span
+                  style="
+                    color: var(--secondary-color-1);
+                  "
+                  class="text-[.6rem] font-semibold"
+                  >active plan</span
+                >
+                <span
+                  style="
+                    font-size: max(12px, 16px);
+                    color: var(--primary-color-1);
+                    font-weight: 500;
+                  "
+                  th:text="${activePlan.plan.planname}"
+                  >heltfit</span
+                >
+              </div>
+              <!-- <div id="planboard-plan-period-picker">
                             <div><img src="image/icon/ep_sunrise.png" alt=""></div>
                             <div><img src="image/icon/sunshine.png" alt=""></div>
                             <div><img src="image/icon/Vector.png" alt=""></div>
                         </div> -->
-                    </section>
-                    <section th:each="exercise : ${activePlan.exercises}" class="plan-item">
-                        <div>
-                            <div
-                                style=" background-color: black; color: white; padding: 16px; font-family: 'Courier New', Courier, monospace; border-radius: 10px;">
-                                <span th:text="${exercise.exercisetime}"></span>
-                            </div>
-
-                        </div>
-                        <div>
-                            <h4 class="item-heading-text"><span th:text="${exercise.exercisename}">Bread & Tea</span></h4>
-                            <p><span class="desc-text" th:text="${exercise.exercisedesc}">5 slice of bread</span></p>
-                            <a th:href="@{/features(item='exercise',itemid=${exercise.id})}"><span>See full description</span></a>
-                        </div>
-                    </section>
-                    <section>
-                        <form th:action="@{/planboard}">
-                            <input type="submit" value="Select a plan">
-                        </form>
-                    </section>
-                </section>
-            </div>
-        </section>
+            </section>
+            <section
+              th:each="exercise : ${activePlan.exercises}"
+              class="plan-item w-full"
+            >
+             <div class=" flex gap-4 items-center">
+                <div
+                  style="
+                    background-color: black;
+                    color: white;
+                    padding: 8px;
+                    font-family: 'Courier New', Courier, monospace;
+                    border-radius: 10px;
+                  "
+                >
+                  <span th:text="${exercise.exercisetime}"></span>
+                </div>
+                <h4 class="item-heading-text">
+                  <span th:text="${exercise.exercisename}">Bread & Tea</span>
+                </h4>
+              </div>
+              <div>
+                <p>
+                  <span th:text="${exercise.exercisedesc}"
+                    >5 slice of bread</span
+                  >
+                </p>
+                <a th:href="@{/features(item='exercise',itemid=${exercise.id})}" class="decoration-dotted underline"
+                  ><span>See full description</span></a
+                >
+              </div>
+            </section>
+            <section>
+              <form th:action="@{/planboard}">
+                <input type="submit" value="Select a plan" />
+              </form>
+            </section>
+          </section>
+        </div>
+      </section>
     </main>
 
     <script>
-        let meal_tab_button = document.getElementById('meal-tab-button');
-        let exercise_tab_button = document.getElementById('exercise-tab-button');
-        let meal_part = document.getElementById('meal-part');
-        let exercise_part = document.getElementById('exercise-part');
+      let meal_tab_button = document.getElementById("meal-tab-button");
+      let exercise_tab_button = document.getElementById("exercise-tab-button");
+      let meal_part = document.getElementById("meal-part");
+      let exercise_part = document.getElementById("exercise-part");
 
-        meal_tab_button.addEventListener('click', () => {
-            console.log('meal')
-            if (exercise_tab_button.classList.contains('tab-button-selected')) {
-                exercise_tab_button.classList.remove('tab-button-selected');
-                meal_tab_button.classList.add('tab-button-selected');
-                exercise_part.classList.add('hide');
-                meal_part.classList.remove('hide');
-            }
-        });
-        exercise_tab_button.addEventListener('click', () => {
-            console.log('exercise')
-            if (meal_tab_button.classList.contains('tab-button-selected')) {
-                meal_tab_button.classList.remove('tab-button-selected');
-                exercise_tab_button.classList.add('tab-button-selected');
-                meal_part.classList.add('hide');
-                exercise_part.classList.remove('hide');
-            }
-        });
-
+      meal_tab_button.addEventListener("click", () => {
+        console.log("meal");
+        if (exercise_tab_button.classList.contains("tab-button-selected")) {
+          exercise_tab_button.classList.remove("tab-button-selected");
+          meal_tab_button.classList.add("tab-button-selected");
+          exercise_part.classList.add("hide");
+          meal_part.classList.remove("hide");
+        }
+      });
+      exercise_tab_button.addEventListener("click", () => {
+        console.log("exercise");
+        if (meal_tab_button.classList.contains("tab-button-selected")) {
+          meal_tab_button.classList.remove("tab-button-selected");
+          exercise_tab_button.classList.add("tab-button-selected");
+          meal_part.classList.add("hide");
+          exercise_part.classList.remove("hide");
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>

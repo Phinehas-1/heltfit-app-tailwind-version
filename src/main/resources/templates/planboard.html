@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <script src="https://cdn.tailwindcss.com" rel="stylesheet"></script>
     <title>Heltfit - the ultimate app for staying healthy.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,30 +18,39 @@
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/planboard.css">
+    <script src="https://kit.fontawesome.com/0fa94578a2.js"
+        crossorigin="anonymous"></script>
 </head>
 
 <body onload="handleSelectPlanChange()">
     <header>
-        <div class="container">
-            <nav class="container">
-                <a th:href="@{/plan}"><img src="image/icon/back-button.png" alt="back button"></a>
+        <div class="w-full flex flex-col items-center">
+            <nav class="w-full flex justify-between bg-[#061A40] text-white items-center h-16 px-6">
+                <a th:href="@{/plan}" class="text-sm px-4 py-2 w-fit border border-white rounded-md"> 
+                    <i class="fa-solid fa-arrow-left text-white"></i>
+                    back</a>
                 <form th:action="@{/logout}" method="post">
-                    <button><img src="image/icon/logout-1.png" alt="logout button"></button>
+                    <button><i class="material-icons text-white">logout</i></button>
                 </form>
             </nav>
-            <section class="page-heading">
-                <p>Create a plan and / or activate one.</p>
-                <form th:action="@{/createPlan}" method="post" th:object="${plan}" class="container-col">
-                    <input type="text" size="8" style="padding: 12px 16px;" th:field="*{planname}" placeholder="plan name">
-                    <input type="submit" value="Create">
-                </form>
-                <form th:action="@{/activatePlan}" method="post" th:object="${plan}" class="container-col">
-                    <select id="userplan-select" th:field="*{planid}" aria-placeholder="select a plan">
-                        <option th:each="plan : ${userPlans}" th:value="${plan.planid}" th:text="${plan.planname}">No Plan
-                        </option>
-                    </select>
-                    <input type="submit" value="Choose">
-                </form>
+            <section class="md:max-w-[920px] w-full flex flex-col md:flex-row gap-4 rounded-md shadow-lg p-8">
+                <div>
+                    <h2 class="font-bold text-3xl">Create a plan and / or activate one.</h2>
+                    <p class="hidden md:block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, praesentium!</p>
+                </div>
+                <div class=" flex flex-col gap-4">
+                    <form th:action="@{/createPlan}" class="flex flex-col gap-2" method="post" th:object="${plan}">
+                        <input type="text" class="px-3 py-3 rounded-md w-full" th:field="*{planname}" placeholder="plan name">
+                        <input type="submit" value="Create" class="w-full rounded-md">
+                    </form>
+                    <form th:action="@{/activatePlan}" class="flex flex-col gap-2" method="post" th:object="${plan}">
+                        <select id="userplan-select" class="px-3 py-3 rounded-md w-full" th:field="*{planid}" aria-placeholder="select a plan">
+                            <option th:each="plan : ${userPlans}" th:value="${plan.planid}" th:text="${plan.planname}">No Plan
+                            </option>
+                        </select>
+                        <input type="submit" value="Choose" class="w-full rounded-md">
+                    </form>
+                </div>
             </section>
         </div>
     </header>
@@ -73,19 +87,19 @@
                     <section>
                         <form th:action="@{/saveMeal}" method="post" th:object="${meal}" id="meal-form"
                             class="container">
-                            <input type="text" th:field="*{mealname}" placeholder="meal name" required />
-                            <input type="time" th:field="*{mealtime}" placeholder="time"/>
-                            <textarea th:field="*{mealdesc}" placeholder="description" cols="30" rows="10"></textarea>
+                            <input type="text" th:field="*{mealname}" placeholder="meal name" class="px-3 py-3 rounded-md w-full" required />
+                            <input type="time" th:field="*{mealtime}" placeholder="time" class="px-3 py-3 rounded-md w-full"/>
+                            <textarea th:field="*{mealdesc}" placeholder="description" class="px-3 py-3 resize-none rounded-md" cols="30" rows="10"></textarea>
                             <input type="hidden" th:field="*{mealplanid}" />
-                            <input type="submit" id="save-plan-btn" value="Save" disabled>
+                            <input type="submit" id="save-plan-btn" class="px-3 py-3 rounded-md w-full" value="Save" disabled>
                         </form>
                         <form th:action="@{/saveExercise}" method="post" th:object="${exercise}" id="exercise-form"
                             class="container hide">
-                            <input type="text" th:field="*{exercisename}" placeholder="exercise name" required />
-                            <input type="time" th:field="*{exercisetime}" placeholder="time" required>
-                            <textarea th:field="*{exercisedesc}" placeholder="description" cols="30" rows="10"></textarea>
+                            <input type="text" th:field="*{exercisename}" placeholder="exercise name" class="px-3 py-3 rounded-md w-full" required />
+                            <input type="time" th:field="*{exercisetime}" placeholder="time" class="px-3 py-3 rounded-md w-full" required>
+                            <textarea th:field="*{exercisedesc}" placeholder="description" class="px-3 py-3 rounded-md" cols="30" rows="10"></textarea>
                             <input type="hidden" th:field="*{exerciseplanid}" />
-                            <input type="submit" id="save-exercise-btn" value="Save" disabled>
+                            <input type="submit" id="save-exercise-btn" class="px-3 py-3 rounded-md w-full" value="Save" disabled>
                         </form>
                     </section>
                 </section>
